@@ -1,5 +1,5 @@
 import { useState, useRef,useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -87,6 +87,7 @@ const Login = () => {
           {isLoading ? 'Logging In...' : 'Log In'}
           </Button>
           <br />
+          <Form.Text>Or <Link to={'/signup'}>Signup...</Link></Form.Text>
           <Form.Text ><a href="#"> Forgot Password ?</a></Form.Text>
         </Form>
       </section >
