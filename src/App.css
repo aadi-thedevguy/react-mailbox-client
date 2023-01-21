@@ -1,0 +1,12 @@
+body {
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+.auth form {
+    max-width: 800px;
+    margin-inline: auto;
+    text-align: left;
+}
