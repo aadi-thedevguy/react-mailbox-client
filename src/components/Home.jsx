@@ -20,7 +20,7 @@ const navigate = useNavigate()
     if (!user) {
         navigate('/')
     }
-},[])
+},[user])
 
   return (
     <main>

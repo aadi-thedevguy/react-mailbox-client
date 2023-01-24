@@ -11,12 +11,13 @@ const ContextProvider = (props) => {
   const [sentMails, setSentMails] = useState([])
 
   useEffect(() => {
+   
     getSentMails()
     getMails()
   }, [])
 
   const getMails = async () => {
-    const userEmail = user?.email?.replace(/\.|@/g, "")
+  const userEmail = user?.email?.replace(/\.|@/g, "")
     const url = `https://fir-99cf8-default-rtdb.asia-southeast1.firebasedatabase.app/${userEmail}/recieved-mails.json`
 
     try {
@@ -32,7 +33,7 @@ const ContextProvider = (props) => {
           read: data[key].read
         })
       }
-      let totalUnreadMessages = 0
+        let totalUnreadMessages = 0
       mails.forEach(mail => {
         if (!mail.read) totalUnreadMessages += 1
       })
@@ -41,6 +42,7 @@ const ContextProvider = (props) => {
     } catch (error) {
       alert(error.message)
     }
+   
   }
 
   const getSentMails = async () => {
@@ -56,7 +58,7 @@ const ContextProvider = (props) => {
         mails.push({
           id: key,
           content: data[key].content,
-          sendTo: data[key].sendTo,
+          sentBy: data[key].sendTo,
           read: data[key].read
         })
       }
@@ -64,11 +66,12 @@ const ContextProvider = (props) => {
       mails.forEach(mail => {
         if (!mail.read) totalUnreadMessages += 1
       })
-      setTotalUnreadSent(totalUnreadMessages)
       setSentMails(mails)
+      setTotalUnreadSent(totalUnreadMessages)
     } catch (error) {
       alert(error.message)
     }
+    
   }
 
   const deleteMail = async (id) => {

@@ -7,7 +7,7 @@ import { AppContext } from '../context/AppContext';
 
 function Inbox({ mails }) {
 
-    const { changeReadStatus, deleteMail, getMails } = useContext(AppContext)
+    const { changeReadStatus, deleteMail,getMails } = useContext(AppContext)
     const navigate = useNavigate()
 
     useEffect(() => {
