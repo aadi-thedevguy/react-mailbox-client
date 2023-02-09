@@ -11,9 +11,13 @@ function SentInbox() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       getSentMails()
     }, 2000);
+
+    return () => {
+      clearInterval(interval)
+    }
   }, [])
   
 
@@ -34,7 +38,7 @@ function SentInbox() {
                                 <span style={{width: '1rem', height: '1rem' }} className={`bg-primary me-2 ${mail.read ? 'd-none' : 'd-inline-block'} rounded-circle`}></span> 
                                 <span className="link text-primary" onClick={() => onClick(mail)}>{mail.sendTo}</span> 
                             </p>
-                            <div className='html' dangerouslySetInnerHTML={{ __html: mail.content }} ></div>
+                            <div className="subject">{mail.subject.substring(0, 30)}...</div>
                         </ListGroup.Item>
                 ))
             }
